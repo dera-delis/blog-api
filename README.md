@@ -136,19 +136,24 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 ## 📸 Screenshots
 
 ### FastAPI Swagger UI
-![Swagger UI](https://via.placeholder.com/800x400/2563eb/ffffff?text=FastAPI+Swagger+UI+Documentation)
+![Swagger UI](screenshots/swagger-ui.png)
 
 *Interactive API documentation with automatic request/response examples*
 
 ### Docker Containers Running
-![Docker Containers](https://via.placeholder.com/800x300/00d4aa/ffffff?text=Docker+Containers+Running)
+![Docker Containers](screenshots/docker-containers.png)
 
 *FastAPI app and PostgreSQL database running in Docker containers*
 
 ### API Testing Example
-![API Testing](https://via.placeholder.com/800x400/7c3aed/ffffff?text=API+Request+Response+Example)
+![API Testing](screenshots/api-testing.png)
 
 *Example of creating a blog post via API with authentication*
+
+> **📝 To capture these screenshots:**
+> 1. **Swagger UI**: Visit `http://localhost:8000/docs` and screenshot the interface
+> 2. **Docker**: Run `docker ps` and screenshot the terminal output
+> 3. **API Testing**: Use Postman, curl, or browser dev tools to test endpoints
 
 ## 📚 API Documentation
 
