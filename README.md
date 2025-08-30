@@ -1,6 +1,37 @@
 # Blog API with Authentication
 
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/fastapi-0.104.1-green.svg)](https://fastapi.tiangolo.com/)
+[![PostgreSQL](https://img.shields.io/badge/postgresql-15-blue.svg)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://img.shields.io/badge/tests-passing-green.svg)](https://github.com/dera-delis/blog-api)
+
 A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT authentication. This project demonstrates modern backend development practices and is perfect for portfolio projects.
+
+## 🏗️ Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   FastAPI App   │    │   PostgreSQL    │    │   Docker        │
+│   (Port 8000)   │◄──►│   Database      │    │   Compose       │
+│                 │    │                 │    │                 │
+│ • JWT Auth      │    │ • User Data     │    │ • Containerized │
+│ • REST API      │    │ • Post Data     │    │ • Easy Deploy   │
+│ • Auto Docs     │    │ • Migrations    │    │ • Dev/Prod      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 │
+                    ┌─────────────────┐
+                    │   Pytest        │
+                    │   Tests         │
+                    │                 │
+                    │ • Unit Tests    │
+                    │ • Integration   │
+                    │ • Coverage      │
+                    └─────────────────┘
+```
 
 ## 🚀 Features
 
@@ -92,6 +123,14 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
    ```bash
    uvicorn app.main:app --reload
    ```
+
+## 🎯 Live Demo
+
+> **Coming Soon**: This API will be deployed to a cloud platform for live testing.
+
+**Interactive API Documentation**: Once deployed, you'll be able to test all endpoints directly at:
+- **Swagger UI**: `https://your-deployment-url/docs`
+- **ReDoc**: `https://your-deployment-url/redoc`
 
 ## 📚 API Documentation
 
@@ -332,3 +371,37 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help, please open an issue on GitHub.
+
+---
+
+## 💼 Portfolio Project
+
+This project is part of my **Backend + AI Portfolio** showcasing modern software development practices. 
+
+### 🎯 What This Demonstrates
+
+- **Backend Development**: Building secure, scalable APIs with FastAPI
+- **Database Design**: PostgreSQL with proper relationships and migrations
+- **Authentication & Security**: JWT implementation with password hashing
+- **Testing**: Comprehensive unit and integration tests
+- **DevOps**: Docker containerization and deployment readiness
+- **Documentation**: Professional README and API documentation
+- **Best Practices**: Clean architecture, error handling, and code organization
+
+### 🔗 More Projects
+
+Check out my other portfolio projects:
+- **[GitHub Profile](https://github.com/dera-delis)** - View all my projects
+- **[LinkedIn](https://linkedin.com/in/your-profile)** - Connect with me professionally
+
+### 🚀 Ready for Production
+
+This API is designed to be production-ready with:
+- ✅ Security best practices
+- ✅ Comprehensive error handling
+- ✅ Database migrations
+- ✅ Containerized deployment
+- ✅ Automated testing
+- ✅ Professional documentation
+
+**Perfect for demonstrating backend development skills to potential employers!** 🎯
