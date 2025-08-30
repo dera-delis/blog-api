@@ -1,0 +1,334 @@
+# Blog API with Authentication
+
+A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT authentication. This project demonstrates modern backend development practices and is perfect for portfolio projects.
+
+## 🚀 Features
+
+- **User Authentication**: JWT-based authentication with secure password hashing
+- **User Management**: Sign up, login, profile management
+- **Blog Posts**: Full CRUD operations for blog posts
+- **Authorization**: Role-based access control (users can only modify their own content)
+- **Database**: PostgreSQL with SQLAlchemy ORM
+- **Migrations**: Alembic for database schema management
+- **Testing**: Comprehensive unit tests with pytest
+- **Docker**: Containerized application with docker-compose
+- **API Documentation**: Auto-generated with FastAPI
+
+## 🛠 Tech Stack
+
+- **Backend**: FastAPI (Python 3.11+)
+- **Database**: PostgreSQL
+- **ORM**: SQLAlchemy
+- **Authentication**: JWT with python-jose
+- **Password Hashing**: bcrypt with passlib
+- **Migrations**: Alembic
+- **Testing**: pytest
+- **Containerization**: Docker & Docker Compose
+- **Documentation**: FastAPI auto-generated docs
+
+## 📋 Prerequisites
+
+- Python 3.11 or higher
+- Docker and Docker Compose (for containerized setup)
+- PostgreSQL (if running locally)
+
+## 🚀 Quick Start
+
+### Option 1: Docker (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd blog-api
+   ```
+
+2. **Start the application**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the application**
+   - API: http://localhost:8000
+   - Interactive API docs: http://localhost:8000/docs
+   - Alternative API docs: http://localhost:8000/redoc
+
+### Option 2: Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd blog-api
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
+   ```bash
+   cp env.example .env
+   # Edit .env with your database credentials
+   ```
+
+5. **Set up database**
+   ```bash
+   # Start PostgreSQL locally or use Docker
+   docker run --name postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=blog_api -p 5432:5432 -d postgres:15
+   ```
+
+6. **Run migrations**
+   ```bash
+   alembic upgrade head
+   ```
+
+7. **Start the application**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+
+#### Register User
+```http
+POST /api/v1/auth/signup
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "username": "username",
+  "password": "password123"
+}
+```
+
+#### Login
+```http
+POST /api/v1/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=username&password=password123
+```
+
+#### Get Current User
+```http
+GET /api/v1/auth/me
+Authorization: Bearer <access_token>
+```
+
+### User Endpoints
+
+#### Get All Users
+```http
+GET /api/v1/users/?skip=0&limit=100
+```
+
+#### Get User by ID
+```http
+GET /api/v1/users/{user_id}
+```
+
+#### Update User
+```http
+PUT /api/v1/users/{user_id}
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "email": "newemail@example.com",
+  "username": "newusername"
+}
+```
+
+#### Delete User
+```http
+DELETE /api/v1/users/{user_id}
+Authorization: Bearer <access_token>
+```
+
+### Post Endpoints
+
+#### Create Post
+```http
+POST /api/v1/posts/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "title": "My Blog Post",
+  "content": "This is the content of my blog post.",
+  "published": true
+}
+```
+
+#### Get All Posts
+```http
+GET /api/v1/posts/?skip=0&limit=100&published_only=false
+```
+
+#### Get Post by ID
+```http
+GET /api/v1/posts/{post_id}
+```
+
+#### Update Post
+```http
+PUT /api/v1/posts/{post_id}
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "title": "Updated Title",
+  "content": "Updated content.",
+  "published": true
+}
+```
+
+#### Delete Post
+```http
+DELETE /api/v1/posts/{post_id}
+Authorization: Bearer <access_token>
+```
+
+#### Get User's Posts
+```http
+GET /api/v1/posts/user/{user_id}?skip=0&limit=100
+```
+
+#### Get My Posts
+```http
+GET /api/v1/posts/my/posts?skip=0&limit=100
+Authorization: Bearer <access_token>
+```
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=app
+
+# Run specific test file
+pytest tests/test_auth.py
+
+# Run with verbose output
+pytest -v
+```
+
+## 📁 Project Structure
+
+```
+blog-api/
+├── app/
+│   ├── __init__.py
+│   ├── main.py              # FastAPI application
+│   ├── config.py            # Configuration settings
+│   ├── database.py          # Database connection
+│   ├── models.py            # SQLAlchemy models
+│   ├── schemas.py           # Pydantic schemas
+│   ├── auth.py              # Authentication logic
+│   ├── crud.py              # CRUD operations
+│   └── routers/
+│       ├── __init__.py
+│       ├── auth.py          # Authentication routes
+│       ├── users.py         # User management routes
+│       └── posts.py         # Post management routes
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py          # Test configuration
+│   ├── test_auth.py         # Authentication tests
+│   └── test_posts.py        # Post tests
+├── alembic/                 # Database migrations
+├── requirements.txt         # Python dependencies
+├── Dockerfile              # Docker configuration
+├── docker-compose.yml      # Docker Compose setup
+├── alembic.ini             # Alembic configuration
+└── README.md               # This file
+```
+
+## 🔧 Configuration
+
+The application uses environment variables for configuration. Copy `env.example` to `.env` and modify as needed:
+
+```env
+# Database Configuration
+DATABASE_URL=postgresql://postgres:password@localhost:5432/blog_api
+
+# JWT Configuration
+SECRET_KEY=your-secret-key-here-change-in-production
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# Application Configuration
+DEBUG=True
+API_V1_STR=/api/v1
+PROJECT_NAME=Blog API
+```
+
+## 🚀 Deployment
+
+### Production Considerations
+
+1. **Security**:
+   - Change the default `SECRET_KEY`
+   - Use environment variables for sensitive data
+   - Configure CORS properly for your domain
+   - Use HTTPS in production
+
+2. **Database**:
+   - Use a managed PostgreSQL service
+   - Set up proper backups
+   - Configure connection pooling
+
+3. **Performance**:
+   - Use a production ASGI server (Gunicorn + Uvicorn)
+   - Set up reverse proxy (Nginx)
+   - Configure caching (Redis)
+
+### Docker Production Build
+
+```bash
+# Build production image
+docker build -t blog-api:prod .
+
+# Run with production settings
+docker run -d \
+  -p 8000:8000 \
+  -e DATABASE_URL=your_production_db_url \
+  -e SECRET_KEY=your_production_secret_key \
+  blog-api:prod
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [FastAPI](https://fastapi.tiangolo.com/) for the amazing web framework
+- [SQLAlchemy](https://www.sqlalchemy.org/) for the ORM
+- [Alembic](https://alembic.sqlalchemy.org/) for database migrations
+- [Pytest](https://docs.pytest.org/) for testing framework
+
+## 📞 Support
+
+If you have any questions or need help, please open an issue on GitHub.
