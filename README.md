@@ -6,6 +6,7 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/tests-passing-green.svg)](https://github.com/dera-delis/blog-api)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue.svg)](https://github.com/dera-delis/blog-api/actions)
 
 A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT authentication. This project demonstrates modern backend development practices and is perfect for portfolio projects.
 
@@ -132,6 +133,23 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 - **Swagger UI**: `https://your-deployment-url/docs`
 - **ReDoc**: `https://your-deployment-url/redoc`
 
+## 📸 Screenshots
+
+### FastAPI Swagger UI
+![Swagger UI](https://via.placeholder.com/800x400/2563eb/ffffff?text=FastAPI+Swagger+UI+Documentation)
+
+*Interactive API documentation with automatic request/response examples*
+
+### Docker Containers Running
+![Docker Containers](https://via.placeholder.com/800x300/00d4aa/ffffff?text=Docker+Containers+Running)
+
+*FastAPI app and PostgreSQL database running in Docker containers*
+
+### API Testing Example
+![API Testing](https://via.placeholder.com/800x400/7c3aed/ffffff?text=API+Request+Response+Example)
+
+*Example of creating a blog post via API with authentication*
+
 ## 📚 API Documentation
 
 ### Authentication Endpoints
@@ -249,6 +267,8 @@ Authorization: Bearer <access_token>
 
 ## 🧪 Testing
 
+### Local Testing
+
 Run the test suite:
 
 ```bash
@@ -264,6 +284,17 @@ pytest tests/test_auth.py
 # Run with verbose output
 pytest -v
 ```
+
+### Continuous Integration
+
+This project uses **GitHub Actions** for automated testing and code quality checks:
+
+- ✅ **Automated Tests**: Runs on every push and pull request
+- ✅ **Code Quality**: Linting with flake8, black, and isort
+- ✅ **Coverage Reports**: Test coverage tracking
+- ✅ **Database Testing**: PostgreSQL integration tests
+
+**CI/CD Status**: ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue.svg)
 
 ## 📁 Project Structure
 
@@ -392,7 +423,7 @@ This project is part of my **Backend + AI Portfolio** showcasing modern software
 
 Check out my other portfolio projects:
 - **[GitHub Profile](https://github.com/dera-delis)** - View all my projects
-- **[LinkedIn](https://linkedin.com/in/your-profile)** - Connect with me professionally
+- **[LinkedIn](https://linkedin.com/in/dera-delis)** - Connect with me professionally
 
 ### 🚀 Ready for Production
 
