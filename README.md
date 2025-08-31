@@ -127,11 +127,24 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 
 ## 🎯 Live Demo
 
-> **Coming Soon**: This API will be deployed to a cloud platform for live testing.
+> **🚀 Ready for Deployment**: Your API is now configured for live deployment!
 
 **Interactive API Documentation**: Once deployed, you'll be able to test all endpoints directly at:
 - **Swagger UI**: `https://your-deployment-url/docs`
 - **ReDoc**: `https://your-deployment-url/redoc`
+
+### 🚀 **Quick Deploy to Render.com**
+
+1. **Push your code to GitHub** (if not already done)
+2. **Go to [render.com](https://render.com)** and sign up/login
+3. **Click "New +" → "Blueprint"**
+4. **Connect your GitHub repository**
+5. **Render will auto-detect the `render.yaml` file**
+6. **Click "Apply" and wait for deployment**
+
+**Your live API will be available at**: `https://your-app-name.onrender.com`
+
+📖 **See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions**
 
 ## 📸 Screenshots
 
@@ -151,7 +164,7 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 *Example of creating a blog post via API with authentication*
 
 > **📝 To capture these screenshots:**
-> 1. **Swagger UI**: Visit `http://localhost:8000/docs` and screenshot the interface
+> 1. **Swagger UI**: Visit `http://localhost:8000/docs` and use browser Dev Tools (F12 → Ctrl+Shift+P → "Capture full size screenshot")
 > 2. **Docker**: Run `docker ps` and screenshot the terminal output
 > 3. **API Testing**: Use Postman, curl, or browser dev tools to test endpoints
 
