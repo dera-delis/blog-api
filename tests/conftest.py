@@ -3,11 +3,11 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-from app.main import app
-from app.database import get_db, Base
-from app.auth import get_password_hash
-from app.models import User
 
+from app.auth import get_password_hash
+from app.database import Base, get_db
+from app.main import app
+from app.models import User
 
 # Create in-memory SQLite database for testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
@@ -38,10 +38,10 @@ def client():
     """Create a test client."""
     # Create tables
     Base.metadata.create_all(bind=engine)
-    
+
     with TestClient(app) as c:
         yield c
-    
+
     # Clean up
     Base.metadata.drop_all(bind=engine)
 
@@ -50,7 +50,7 @@ def client():
 def db_session():
     """Create a database session for testing."""
     Base.metadata.create_all(bind=engine)
-    
+
     session = TestingSessionLocal()
     try:
         yield session
@@ -65,7 +65,7 @@ def test_user(db_session):
     user = User(
         email="test@example.com",
         username="testuser",
-        hashed_password=get_password_hash("testpassword")
+        hashed_password=get_password_hash("testpassword"),
     )
     db_session.add(user)
     db_session.commit()
@@ -79,7 +79,7 @@ def test_user2(db_session):
     user = User(
         email="test2@example.com",
         username="testuser2",
-        hashed_password=get_password_hash("testpassword2")
+        hashed_password=get_password_hash("testpassword2"),
     )
     db_session.add(user)
     db_session.commit()
@@ -90,9 +90,8 @@ def test_user2(db_session):
 @pytest.fixture
 def auth_headers(client, test_user):
     """Get authentication headers for a test user."""
-    response = client.post("/api/v1/auth/login", data={
-        "username": "testuser",
-        "password": "testpassword"
-    })
+    response = client.post(
+        "/api/v1/auth/login", data={"username": "testuser", "password": "testpassword"}
+    )
     token = response.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}

@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from app.config import settings
 from app.database import engine
 from app.models import Base
-from app.routers import auth, users, posts
+from app.routers import auth, posts, users
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -13,7 +14,7 @@ app = FastAPI(
     title=settings.project_name,
     version="1.0.0",
     description="A secure Blog API with authentication built with FastAPI",
-    openapi_url=f"{settings.api_v1_str}/openapi.json"
+    openapi_url=f"{settings.api_v1_str}/openapi.json",
 )
 
 # Add CORS middleware
@@ -38,7 +39,7 @@ async def root():
         "message": "Welcome to Blog API",
         "version": "1.0.0",
         "docs": "/docs",
-        "redoc": "/redoc"
+        "redoc": "/redoc",
     }
 
 

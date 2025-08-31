@@ -1,12 +1,15 @@
 from datetime import timedelta
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from app.database import get_db
-from app.auth import authenticate_user, create_access_token, get_current_active_user
-from app.crud import create_user, get_user_by_email, get_user_by_username
-from app.schemas import UserCreate, User, Token
+
+from app.auth import (authenticate_user, create_access_token,
+                      get_current_active_user)
 from app.config import settings
+from app.crud import create_user, get_user_by_email, get_user_by_username
+from app.database import get_db
+from app.schemas import Token, User, UserCreate
 
 router = APIRouter(prefix="/auth", tags=["authentication"])
 
@@ -18,23 +21,23 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     db_user = get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email already registered"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered"
         )
-    
+
     # Check if username already exists
     db_user = get_user_by_username(db, username=user.username)
     if db_user:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Username already taken"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Username already taken"
         )
-    
+
     return create_user(db=db, user=user)
 
 
 @router.post("/login", response_model=Token)
-def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+def login(
+    form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
+):
     """Login user and return access token."""
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
@@ -43,7 +46,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
+
     access_token_expires = timedelta(minutes=settings.access_token_expire_minutes)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
