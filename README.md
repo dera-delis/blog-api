@@ -138,10 +138,11 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 ### 🌐 **Live API Endpoints**
 
 [![Live API](https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api)](https://blog-api-qnzg.onrender.com/)
+[![API Docs](https://img.shields.io/badge/API_Docs-Interactive_Testing-blue?style=for-the-badge&logo=swagger)](https://blog-api-qnzg.onrender.com/docs)
 
-**Click the button above to test your live API!**
-
-**Available at**: `https://blog-api-qnzg.onrender.com/`
+**Click the buttons above to:**
+- **Live API**: Test your working backend
+- **API Docs**: Interactive Swagger UI documentation
 
 ## 📸 Screenshots
 
