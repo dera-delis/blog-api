@@ -10,6 +10,8 @@
 
 A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT authentication. This project demonstrates modern backend development practices and is perfect for portfolio projects.
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect_with_Me-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/dera-delis/)
+
 ## 🏗️ Architecture
 
 ```
@@ -127,24 +129,19 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 
 ## 🎯 Live Demo
 
-> **🚀 Ready for Deployment**: Your API is now configured for live deployment!
+> **🚀 LIVE NOW**: Your Blog API is deployed and ready for recruiters to test!
 
-**Interactive API Documentation**: Once deployed, you'll be able to test all endpoints directly at:
-- **Swagger UI**: `https://your-deployment-url/docs`
-- **ReDoc**: `https://your-deployment-url/redoc`
+**Interactive API Documentation**: Test all endpoints directly at:
+- **Swagger UI**: `https://blog-api-qnzg.onrender.com/docs`
+- **ReDoc**: `https://blog-api-qnzg.onrender.com/redoc`
 
-### 🚀 **Quick Deploy to Render.com**
+### 🌐 **Live API Endpoints**
 
-1. **Push your code to GitHub** (if not already done)
-2. **Go to [render.com](https://render.com)** and sign up/login
-3. **Click "New +" → "Blueprint"**
-4. **Connect your GitHub repository**
-5. **Render will auto-detect the `render.yaml` file**
-6. **Click "Apply" and wait for deployment**
+[![Live API](https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api)](https://blog-api-qnzg.onrender.com/)
 
-**Your live API will be available at**: `https://your-app-name.onrender.com`
+**Click the button above to test your live API!**
 
-📖 **See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions**
+**Available at**: `https://blog-api-qnzg.onrender.com/`
 
 ## 📸 Screenshots
 
@@ -441,7 +438,7 @@ This project is part of my **Backend + AI Portfolio** showcasing modern software
 
 Check out my other portfolio projects:
 - **[GitHub Profile](https://github.com/dera-delis)** - View all my projects
-- **[LinkedIn](https://linkedin.com/in/dera-delis)** - Connect with me professionally
+- **[LinkedIn](https://www.linkedin.com/in/dera-delis/)** - Connect with me professionally
 
 ### 🚀 Ready for Production
 
