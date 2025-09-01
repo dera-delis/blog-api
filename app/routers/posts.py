@@ -4,8 +4,14 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.auth import get_current_active_user
-from app.crud import (create_post, delete_post, get_post, get_posts,
-                      get_user_posts, update_post)
+from app.crud import (
+    create_post,
+    delete_post,
+    get_post,
+    get_posts,
+    get_user_posts,
+    update_post,
+)
 from app.database import get_db
 from app.models import User
 from app.schemas import Post, PostCreate, PostUpdate
