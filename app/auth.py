@@ -13,11 +13,13 @@ import bcrypt as _bcrypt
 # Store original hashpw
 _original_bcrypt_hashpw = _bcrypt.hashpw
 
+
 def _patched_bcrypt_hashpw(secret, salt):
     """Patched bcrypt.hashpw that truncates secrets longer than 72 bytes."""
     if isinstance(secret, bytes) and len(secret) > 72:
         secret = secret[:72]
     return _original_bcrypt_hashpw(secret, salt)
+
 
 # Apply the patch
 _bcrypt.hashpw = _patched_bcrypt_hashpw
@@ -25,10 +27,10 @@ _bcrypt.hashpw = _patched_bcrypt_hashpw
 # Also patch passlib's detect_wrap_bug to catch any remaining errors (if it exists)
 try:
     import passlib.handlers.bcrypt as bcrypt_module
-    
-    if hasattr(bcrypt_module, 'detect_wrap_bug'):
+
+    if hasattr(bcrypt_module, "detect_wrap_bug"):
         _original_detect_wrap_bug = bcrypt_module.detect_wrap_bug
-        
+
         def _patched_detect_wrap_bug(ident):
             """Patched version that handles 72-byte limit gracefully."""
             try:
@@ -38,7 +40,7 @@ try:
                 if "cannot be longer than 72 bytes" in str(e):
                     return False
                 raise
-        
+
         bcrypt_module.detect_wrap_bug = _patched_detect_wrap_bug
 except (ImportError, AttributeError):
     # If detect_wrap_bug doesn't exist or can't be patched, that's okay
