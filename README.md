@@ -10,7 +10,9 @@
 
 A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT authentication. This project demonstrates modern backend development practices and is perfect for portfolio projects.
 
-<a href="https://www.linkedin.com/in/dera-delis/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/LinkedIn-Connect_with_Me-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn"></a>
+<a href="https://www.linkedin.com/in/dera-delis/" target="_blank">
+<img src="https://img.shields.io/badge/LinkedIn-Connect_with_Me-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+</a>
 
 ## 🏗️ Architecture
 
@@ -132,13 +134,17 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 > **🚀 LIVE NOW**: Your Blog API is deployed and ready for recruiters to test!
 
 **Interactive API Documentation**: Test all endpoints directly at:
-- **Swagger UI**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/docs" target="_blank" rel="noopener noreferrer">https://p01--blog-api--vjph2yyvn7yg.code.run/docs</a>
-- **ReDoc**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/redoc" target="_blank" rel="noopener noreferrer">https://p01--blog-api--vjph2yyvn7yg.code.run/redoc</a>
+- **Swagger UI**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/docs" target="_blank">https://p01--blog-api--vjph2yyvn7yg.code.run/docs</a>
+- **ReDoc**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/redoc" target="_blank">https://p01--blog-api--vjph2yyvn7yg.code.run/redoc</a>
 
 ### 🌐 **Live API Endpoints**
 
-<a href="https://p01--blog-api--vjph2yyvn7yg.code.run/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api" alt="Live API"></a>
-<a href="https://p01--blog-api--vjph2yyvn7yg.code.run/docs" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/API_Docs-Interactive_Testing-blue?style=for-the-badge&logo=swagger" alt="API Docs"></a>
+<a href="https://p01--blog-api--vjph2yyvn7yg.code.run/" target="_blank">
+<img src="https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api" alt="Live API">
+</a>
+<a href="https://p01--blog-api--vjph2yyvn7yg.code.run/docs" target="_blank">
+<img src="https://img.shields.io/badge/API_Docs-Interactive_Testing-blue?style=for-the-badge&logo=swagger" alt="API Docs">
+</a>
 
 **Click the buttons above to:**
 - **Live API**: Test your working backend
@@ -438,8 +444,8 @@ This project is part of my **Backend + AI Portfolio** showcasing modern software
 ### 🔗 More Projects
 
 Check out my other portfolio projects:
-- **<a href="https://github.com/dera-delis" target="_blank" rel="noopener noreferrer">GitHub Profile</a>** - View all my projects
-- **<a href="https://www.linkedin.com/in/dera-delis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>** - Connect with me professionally
+- **<a href="https://github.com/dera-delis" target="_blank">GitHub Profile</a>** - View all my projects
+- **<a href="https://www.linkedin.com/in/dera-delis/" target="_blank">LinkedIn</a>** - Connect with me professionally
 
 ### 🚀 Ready for Production
 
