@@ -4,8 +4,42 @@ from typing import Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from sqlalchemy.orm import Session
+
+# Monkey patch to fix passlib/bcrypt compatibility issue
+# The wrap bug detection uses a 200-byte test string that exceeds bcrypt's 72-byte limit
+import bcrypt as _bcrypt
+
+# Store original hashpw
+_original_bcrypt_hashpw = _bcrypt.hashpw
+
+def _patched_bcrypt_hashpw(secret, salt):
+    """Patched bcrypt.hashpw that truncates secrets longer than 72 bytes."""
+    if isinstance(secret, bytes) and len(secret) > 72:
+        secret = secret[:72]
+    return _original_bcrypt_hashpw(secret, salt)
+
+# Apply the patch
+_bcrypt.hashpw = _patched_bcrypt_hashpw
+
+# Also patch passlib's detect_wrap_bug to catch any remaining errors
+import passlib.handlers.bcrypt as bcrypt_module
+
+_original_detect_wrap_bug = bcrypt_module.detect_wrap_bug
+
+def _patched_detect_wrap_bug(ident):
+    """Patched version that handles 72-byte limit gracefully."""
+    try:
+        return _original_detect_wrap_bug(ident)
+    except ValueError as e:
+        # If the test fails due to 72-byte limit, assume no wrap bug
+        if "cannot be longer than 72 bytes" in str(e):
+            return False
+        raise
+
+bcrypt_module.detect_wrap_bug = _patched_detect_wrap_bug
+
+from passlib.context import CryptContext
 
 from app.config import settings
 from app.database import get_db

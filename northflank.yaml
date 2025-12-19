@@ -1,0 +1,78 @@
+# Northflank Deployment Configuration
+# This file documents the deployment configuration for Northflank
+# Northflank uses Docker-based deployments and can be configured via UI, CLI, or API
+
+version: '1.0'
+
+# Service Configuration
+service:
+  name: blog-api
+  type: container
+  
+  # Build Configuration
+  build:
+    type: dockerfile
+    dockerfile: Dockerfile
+    context: .
+  
+  # Port Configuration
+  ports:
+    - containerPort: 8000
+      protocol: http
+      public: true
+  
+  # Environment Variables
+  environment:
+    - name: DATABASE_URL
+      value: ${DATABASE_URL}  # Set in Northflank UI or via secret
+    - name: SECRET_KEY
+      value: ${SECRET_KEY}    # Set in Northflank UI or via secret
+    - name: ALGORITHM
+      value: HS256
+    - name: ACCESS_TOKEN_EXPIRE_MINUTES
+      value: "30"
+    - name: DEBUG
+      value: "false"
+    - name: API_V1_STR
+      value: /api/v1
+    - name: PROJECT_NAME
+      value: Blog API
+  
+  # Resource Limits (adjust based on your plan)
+  resources:
+    cpu: 0.5
+    memory: 512Mi
+  
+  # Health Check
+  healthCheck:
+    path: /health
+    port: 8000
+    interval: 30
+    timeout: 10
+    retries: 3
+
+# Database Service (PostgreSQL)
+database:
+  name: blog-api-db
+  type: postgresql
+  version: "15"
+  
+  # Database Configuration
+  config:
+    database: blog_api
+    user: blog_api_user
+  
+  # Resource Limits
+  resources:
+    cpu: 0.25
+    memory: 256Mi
+    storage: 10Gi
+
+# Note: Northflank configuration is primarily done through:
+# 1. Web UI at https://app.northflank.com
+# 2. CLI: nf service create
+# 3. API: REST API endpoints
+#
+# This YAML file serves as documentation and can be used with
+# Northflank CLI or imported via their API
+
