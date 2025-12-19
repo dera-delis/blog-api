@@ -132,13 +132,13 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 > **🚀 LIVE NOW**: Your Blog API is deployed and ready for recruiters to test!
 
 **Interactive API Documentation**: Test all endpoints directly at:
-- **Swagger UI**: `https://your-service-name.northflank.app/docs`
-- **ReDoc**: `https://your-service-name.northflank.app/redoc`
+- **Swagger UI**: `https://p01--blog-api--vjph2yyvn7yg.code.run/docs`
+- **ReDoc**: `https://p01--blog-api--vjph2yyvn7yg.code.run/redoc`
 
 ### 🌐 **Live API Endpoints**
 
-[![Live API](https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api)](https://your-service-name.northflank.app/)
-[![API Docs](https://img.shields.io/badge/API_Docs-Interactive_Testing-blue?style=for-the-badge&logo=swagger)](https://your-service-name.northflank.app/docs)
+[![Live API](https://img.shields.io/badge/Live_API-Test_Now-green?style=for-the-badge&logo=api)](https://p01--blog-api--vjph2yyvn7yg.code.run/)
+[![API Docs](https://img.shields.io/badge/API_Docs-Interactive_Testing-blue?style=for-the-badge&logo=swagger)](https://p01--blog-api--vjph2yyvn7yg.code.run/docs)
 
 **Click the buttons above to:**
 - **Live API**: Test your working backend

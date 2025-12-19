@@ -91,9 +91,9 @@ This guide will help you deploy your Blog API live so recruiters can see it in a
    ```
 
 ### **Step 3: Access Your Live API**
-- **API Base URL**: `https://your-service-name.northflank.app`
-- **Interactive Docs**: `https://your-service-name.northflank.app/docs`
-- **Health Check**: `https://your-service-name.northflank.app/health`
+- **API Base URL**: `https://p01--blog-api--vjph2yyvn7yg.code.run`
+- **Interactive Docs**: `https://p01--blog-api--vjph2yyvn7yg.code.run/docs`
+- **Health Check**: `https://p01--blog-api--vjph2yyvn7yg.code.run/health`
 
 ## 🎯 **What Recruiters Will See**
 
@@ -132,12 +132,12 @@ This guide will help you deploy your Blog API live so recruiters can see it in a
 
 ### **1. Health Check**
 ```bash
-curl https://your-service-name.northflank.app/health
+curl https://p01--blog-api--vjph2yyvn7yg.code.run/health
 ```
 
 ### **2. Create a User**
 ```bash
-curl -X POST "https://your-service-name.northflank.app/api/v1/auth/signup" \
+curl -X POST "https://p01--blog-api--vjph2yyvn7yg.code.run/api/v1/auth/signup" \
   -H "Content-Type: application/json" \
   -d '{
     "email": "test@example.com",
@@ -148,14 +148,14 @@ curl -X POST "https://your-service-name.northflank.app/api/v1/auth/signup" \
 
 ### **3. Login**
 ```bash
-curl -X POST "https://your-service-name.northflank.app/api/v1/auth/login" \
+curl -X POST "https://p01--blog-api--vjph2yyvn7yg.code.run/api/v1/auth/login" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "username=testuser&password=password123"
 ```
 
 ### **4. Create a Blog Post**
 ```bash
-curl -X POST "https://your-service-name.northflank.app/api/v1/posts/" \
+curl -X POST "https://p01--blog-api--vjph2yyvn7yg.code.run/api/v1/posts/" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -168,8 +168,8 @@ curl -X POST "https://your-service-name.northflank.app/api/v1/posts/" \
 ## 🌐 **Share with Recruiters**
 
 ### **Portfolio Links**
-- **Live API**: `https://your-service-name.northflank.app`
-- **Interactive Docs**: `https://your-service-name.northflank.app/docs`
+- **Live API**: `https://p01--blog-api--vjph2yyvn7yg.code.run`
+- **Interactive Docs**: `https://p01--blog-api--vjph2yyvn7yg.code.run/docs`
 - **GitHub Repo**: `https://github.com/yourusername/blog-api`
 - **README**: `https://github.com/yourusername/blog-api#readme`
 
