@@ -1,15 +1,20 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
+import bcrypt as _bcrypt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
+from passlib.context import CryptContext
 from sqlalchemy.orm import Session
+
+from app.config import settings
+from app.database import get_db
+from app.models import User
+from app.schemas import TokenData
 
 # Monkey patch to fix passlib/bcrypt compatibility issue
 # The wrap bug detection uses a 200-byte test string that exceeds bcrypt's 72-byte limit
-import bcrypt as _bcrypt
-
 # Store original hashpw
 _original_bcrypt_hashpw = _bcrypt.hashpw
 
@@ -46,13 +51,6 @@ except (ImportError, AttributeError):
     # If detect_wrap_bug doesn't exist or can't be patched, that's okay
     # The bcrypt.hashpw patch should be sufficient
     pass
-
-from passlib.context import CryptContext
-
-from app.config import settings
-from app.database import get_db
-from app.models import User
-from app.schemas import TokenData
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
