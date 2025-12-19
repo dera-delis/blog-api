@@ -22,22 +22,28 @@ def _patched_bcrypt_hashpw(secret, salt):
 # Apply the patch
 _bcrypt.hashpw = _patched_bcrypt_hashpw
 
-# Also patch passlib's detect_wrap_bug to catch any remaining errors
-import passlib.handlers.bcrypt as bcrypt_module
-
-_original_detect_wrap_bug = bcrypt_module.detect_wrap_bug
-
-def _patched_detect_wrap_bug(ident):
-    """Patched version that handles 72-byte limit gracefully."""
-    try:
-        return _original_detect_wrap_bug(ident)
-    except ValueError as e:
-        # If the test fails due to 72-byte limit, assume no wrap bug
-        if "cannot be longer than 72 bytes" in str(e):
-            return False
-        raise
-
-bcrypt_module.detect_wrap_bug = _patched_detect_wrap_bug
+# Also patch passlib's detect_wrap_bug to catch any remaining errors (if it exists)
+try:
+    import passlib.handlers.bcrypt as bcrypt_module
+    
+    if hasattr(bcrypt_module, 'detect_wrap_bug'):
+        _original_detect_wrap_bug = bcrypt_module.detect_wrap_bug
+        
+        def _patched_detect_wrap_bug(ident):
+            """Patched version that handles 72-byte limit gracefully."""
+            try:
+                return _original_detect_wrap_bug(ident)
+            except ValueError as e:
+                # If the test fails due to 72-byte limit, assume no wrap bug
+                if "cannot be longer than 72 bytes" in str(e):
+                    return False
+                raise
+        
+        bcrypt_module.detect_wrap_bug = _patched_detect_wrap_bug
+except (ImportError, AttributeError):
+    # If detect_wrap_bug doesn't exist or can't be patched, that's okay
+    # The bcrypt.hashpw patch should be sufficient
+    pass
 
 from passlib.context import CryptContext
 
