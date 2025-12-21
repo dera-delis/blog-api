@@ -135,7 +135,6 @@ A secure, production-ready Blog API built with FastAPI, PostgreSQL, and JWT auth
 
 **Interactive API Documentation**: Test all endpoints directly at:
 - **Swagger UI**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/docs" target="_blank">https://p01--blog-api--vjph2yyvn7yg.code.run/docs</a>
-- **ReDoc**: <a href="https://p01--blog-api--vjph2yyvn7yg.code.run/redoc" target="_blank">https://p01--blog-api--vjph2yyvn7yg.code.run/redoc</a>
 
 ### 🌐 **Live API Endpoints**
 
